@@ -5,6 +5,8 @@ This project is a record for the learning procedure of iOS development from a ve
 
 ## Contents
 
+* [Resources](resources)
+
 
 ## Authorship
 
