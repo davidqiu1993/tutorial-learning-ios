@@ -9,6 +9,81 @@ iOS 5最显著的变化就是增加了Automatic Reference Counting（自动引�
 
 该机能在 iOS 5/ Mac OS X 10.7 开始导入，利用 Xcode4.2 可以使用该机能。简单地理解ARC，就是通过指定的语法，让编译器(LLVM 3.0)在编译代码时，自动生成实例的引用计数管理部分代码。ARC并不是GC，它只是一种代码静态分析（Static Analyzer）工具。
 
+
+### 变化对比
+
+通过一小段代码，我们看看使用ARC前后的变化点。
+
+没有使用 ARC 的代码：
+
+```
+@interface NonARCObject : NSObject {  
+    NSString *name;  
+}  
+-(id)initWithName:(NSString *)name;  
+@end  
+ 
+@implementation NonARCObject  
+-(id)initWithName:(NSString *)newName {  
+    self = [super init];  
+    if (self) {  
+        name = [newName retain];  
+    }  
+    return self;  
+}  
+ 
+-(void)dealloc {  
+    [name release];  
+    [Super dealloc];  
+}  
+@end
+```
+
+使用 ARC 后的代码：
+
+```
+@interface ARCObject : NSObject {  
+    NSString *name;  
+}  
+-(id)initWithName:(NSString *)name;  
+@end  
+ 
+@implementation ARCObject  
+-(id)initWithName:(NSString *)newName {  
+    self = [super init];  
+    if (self) {  
+        name = newName;  
+    }  
+    return self;  
+}  
+@end
+```
+
+我们之前使用Objective-C中内存管理规则时，往往采用下面的准则：
+
+* 生成对象时，使用autorelease
+* 对象代入时，先autorelease后再retain
+* 对象在函数中返回时，使用return [[object retain] autorelease];
+
+而使用ARC后，我们可以不需要这样做了，甚至连最基础的release都不需要了。
+
+__使用ARC的好处__：
+
+* 看到上面的例子，大家就知道了，以后写Objective-C的代码变得简单多了，因为我们不需要担心烦人的内存管理，担心内存泄露了
+* 代码的总量变少了，看上去清爽了不少，也节省了劳动力
+* 代码高速化，由于使用编译器管理引用计数，减少了低效代码的可能性
+
+__不好的地方__：
+
+* 记住一堆新的ARC规则 — 关键字及特性等需要一定的学习周期
+* 一些旧的代码，第三方代码使用的时候比较麻烦；修改代码需要工数，要么修改编译开关
+
+由于 XCode4.2 中缺省ARC就是 ON 的状态，所以编译旧代码的时候往往有"Automatic Reference Counting Issue"的错误信息。这个时候：
+
+* 可以将项目编译设置中的“Objectice-C Auto Reference Counteting”设为NO。
+* 如果只想对某个.m文件不适应ARC，可以只针对该类文件加上 -fno-objc-arc 编译FLAGS。
+
+
 ### 指针保持对象的生命
 
 ARC的规则非常简单：只要还有一个变量指向对象，对象就会保持在内存中。当指针指向新值，或者指针不再存在时，相关联的对象就会自动释放。这条规则对于实例变量、synthesize属性、本地变量都是适用的。
@@ -34,6 +109,22 @@ self.textField.text = firstName
 ![arc_02](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/8b759e3f72/arc_02.jpg)
 
 当以上所有指针指向新值，或者指针不再存在时，相关联的对象就会自动释放。
+
+
+### ARC基本规则
+
+* retain, release, autorelease, dealloc 由编译器自动插入，不能在代码中调用
+* dealloc虽然可以被重载，但是不能调用 `[super dealloc]`
+
+
+### Objective-C对象
+
+ObjectiveC中的对象，有强参照(Strong reference)和弱参照(Weak reference)之分，当需要保持其他对象的时候，需要retain以确保对象引用计数加1。对象的持有者(owner)只要存在，那么该对象的强参照就一直存在。
+
+对象处理的基本规则是
+
+* 只要对象的持有者存在（对象被强参照），那么就可以使用该对象
+* 对象失去了持有者后，即被破弃
 
 
 ## Auto Release
