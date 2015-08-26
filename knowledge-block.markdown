@@ -3,7 +3,7 @@
 块（Block）类似于 C#、Java 中的匿名函数，不用块而使用其他的方法一样可以达到相同的效果。和 C#、Java一 样，块的使用可以使代码更紧凑、便于阅读，显得高大上。
 
 
-## 定义块
+## 1. 定义块
 
 以下例子中定义了一个叫 `myBlock` 的块：
 
@@ -39,7 +39,7 @@
 块代码体内能够使用包含块的方法内部的变量，如本例子中块中使用了局部变量 `methodVar`。需注意的是块中代码体只能使用 `methodVar`，而不能改变 `methodVar` 的值，要想改变局部变量的值，需要在声明局部变量的时候加上关键字 `__block`。
 
 
-## 使用块
+## 2. 使用块
 
 块可以作为方法的参数传递，以汽车为例，汽车在启动前和启动后要加入一些行为，这个行为由驾驶员决定，如下为代码实例：
 
@@ -161,5 +161,15 @@ Driver类中可以不定义块变量，以一种类似于匿名方法的书写�
 
 @end
 ```
+
+
+3. Resources
+
+Below are the related resources about block.
+
+* [Objective-C 语法之代码块（Block）的使用](http://blog.csdn.net/totogo2010/article/details/7839061)
+* [详解 Objective-C Block 应用](http://mobile.51cto.com/iphone-279757.htm)
+* [谈 Objective-C Block 的实现](http://blog.devtang.com/blog/2013/07/28/a-look-inside-blocks/)
+* [Objective-C 中的 Block](http://www.cocoachina.com/ios/20150109/10891.html)
 
 
