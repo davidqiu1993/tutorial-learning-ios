@@ -6,9 +6,8 @@ This page contains knowledge points about memory management for iOS development.
 ## ARC (Automatic Reference Counting)
 
 
-## Block
+## Auto Release
 
-
-## NSOperation and NSOperationQueue
+retain, release, autorelease
 
 
