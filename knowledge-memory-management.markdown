@@ -205,3 +205,11 @@ ClassName *myName = [[[ClassName alloc] init] autorelease]; // 标记为 autorel
 记住一点：如果这个对象是你 alloc 或者 new 出来的，你就需要调用 release。如果使用 autorelease，那么仅在发生过 retain 的时候 release 一次（让retainCount 始终为1）。
 
 
+## 3. Resources
+
+Below are the related resources about memory management.
+
+* [iOS开发ARC内存管理技术要点](http://www.cnblogs.com/flyFreeZn/p/4264220.html)
+* Automatic Reference Counting on iOS \([English Version](http://www.drdobbs.com/mobile/automatic-reference-counting-on-ios/240000820) | [Chinese Version, Translation](http://www.oschina.net/translate/automatic-reference-counting-on-ios)\)
+
+
