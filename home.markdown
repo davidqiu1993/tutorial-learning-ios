@@ -22,8 +22,8 @@ Below are the knowledge points.
 
 Below are the useful resources for iOS development learning.
 
-* [iOS Developer Library \(Prerelease\)](https://developer.apple.com/library/prerelease/ios/navigation/)
 * [Objective-C 快速上手](http://www.cnblogs.com/zzy0471/p/3894307.html)
+* [iOS Developer Library \(Prerelease\)](https://developer.apple.com/library/prerelease/ios/navigation/)
 
 
 ## Authorship
@@ -34,4 +34,3 @@ Below is the information of the authorship.
 * Email: david.qiu@dji.com
 
 Copyright (C) 2015, David Qiu. All rights reserved.
-
