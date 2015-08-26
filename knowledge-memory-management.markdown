@@ -3,14 +3,14 @@
 This page contains knowledge points about memory management for iOS development.
 
 
-## ARC (Automatic Reference Counting)
+## 1. ARC (Automatic Reference Counting)
 
 iOS 5最显著的变化就是增加了Automatic Reference Counting（自动引用计数）。ARC是新LLVM 3.0编译器的特性，完全消除了手动内存管理的烦琐。在你的项目中使用ARC是非常简单的，所有的编程都和以前一样，除了你不再调用retain, release, autorelease。启用ARC之后，编译器会自动在适当的地方插入适当的retain, release, autorelease语句。你不再需要担心内存管理，因为编译器为你处理了一切。注意ARC是编译器特性，而不是iOS运行时特性（除了weak指针系统），它也不是其它语言中的垃圾收集器。因此ARC和手动内存管理性能是一样的，有些时候还能更加快速，因为编译器还可以执行某些优化。
 
 该机能在 iOS 5/ Mac OS X 10.7 开始导入，利用 Xcode4.2 可以使用该机能。简单地理解ARC，就是通过指定的语法，让编译器(LLVM 3.0)在编译代码时，自动生成实例的引用计数管理部分代码。ARC并不是GC，它只是一种代码静态分析（Static Analyzer）工具。
 
 
-### 变化对比
+### 1.1 变化对比
 
 通过一小段代码，我们看看使用ARC前后的变化点。
 
@@ -84,7 +84,7 @@ __不好的地方__：
 * 如果只想对某个.m文件不适应ARC，可以只针对该类文件加上 -fno-objc-arc 编译FLAGS。
 
 
-### 指针保持对象的生命
+### 1.2 指针保持对象的生命
 
 ARC的规则非常简单：只要还有一个变量指向对象，对象就会保持在内存中。当指针指向新值，或者指针不再存在时，相关联的对象就会自动释放。这条规则对于实例变量、synthesize属性、本地变量都是适用的。
 
@@ -111,13 +111,13 @@ self.textField.text = firstName
 当以上所有指针指向新值，或者指针不再存在时，相关联的对象就会自动释放。
 
 
-### ARC基本规则
+### 1.3 ARC基本规则
 
 * retain, release, autorelease, dealloc 由编译器自动插入，不能在代码中调用
 * dealloc虽然可以被重载，但是不能调用 `[super dealloc]`
 
 
-### ARC的修饰符
+### 1.4 ARC的修饰符
 
 ARC主要提供了4种修饰符，他们分别是: `__strong`, `__weak`, `__autoreleasing`, `__unsafe_unretained`。
 
@@ -133,12 +133,12 @@ ARC主要提供了4种修饰符，他们分别是: `__strong`, `__weak`, `__auto
 
 
 
-## 手动内存管理（`retain`, `release`, `autorelease`）
+## 2. 手动内存管理（`retain`, `release`, `autorelease`）
 
 旧版本的 Objective-C 在管理内存时，遵循一套简单的规则。每一个对象都有一个名为 `retainCount` 的变量，它表示该对象有多少个引用。任何继承了NSObject 的对象都可以使用这个特性，对基本数据类型无效。
 
 
-### 原理
+### 2.1 原理
 
 * 每个对象内部都保存了一个与之相关联的整数，称为引用计数器（`retainCount`）
 * 每当使用 `alloc`, `new` 或者 `copy` 创建一个对象时，对象的引用计数器被设置为 1
@@ -148,14 +148,14 @@ ARC主要提供了4种修饰符，他们分别是: `__strong`, `__weak`, `__auto
 * 可以给对象发送 `retainCount` 消息获得当前的引用计数器值。
 
 
-### 内存管理原则
+### 2.2 内存管理原则
 
 * 谁创建，谁释放（“谁污染，谁治理”）。如果你通过 alloc、new 或者 (mutable) copy 来创建一个对象，那么你必须调用 release 或 autorelease。或句话说，不是你创建的，就不用你去释放
 * 一般来说，除了 alloc、new 或 copy 之外的方法创建的对象都被声明了 autorelease（autorelease 是延迟释放内存，不用你自己去手动释放，系统会知道在什么时候该去释放掉它。）
 * 谁 retain，谁 release。只要你调用了 retain，无论这个对象是如何生成的，你都要调用 release
 
 
-### 关于 `retain` 与 `release`
+### 2.3 关于 `retain` 与 `release`
 
 retain 之后 count 加一。alloc 之后 count 就是1，release 就会调用 dealloc 销毁这个对象。
 
@@ -179,7 +179,7 @@ ClassName *myName = [[ClassName alloc] init];
 [myName release];         // retainCount == 1，在 ClassA 的 dealloc 中 release，name 才能真正释放内存。
 ```
 
-### 关于 `autorelease`
+### 2.4 关于 `autorelease`
 
 autorelease 更加 tricky，而且很容易被它的名字迷惑。我在这里要强调一下：autorelease 不是 garbage collection，完全不同于 Java 或者 .Net 中的 GC。
 
