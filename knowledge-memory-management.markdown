@@ -133,6 +133,75 @@ ARC主要提供了4种修饰符，他们分别是: `__strong`, `__weak`, `__auto
 
 
 
-## Auto Release
+## `retain`, `release`, `autorelease`
 
-retain, release, autorelease
+旧版本的 Objective-C 在管理内存时，遵循一套简单的规则。每一个对象都有一个名为 `retainCount` 的变量，它表示该对象有多少个引用。任何继承了NSObject 的对象都可以使用这个特性，对基本数据类型无效。
+
+
+### 原理
+
+* 每个对象内部都保存了一个与之相关联的整数，称为引用计数器（`retainCount`）
+* 每当使用 `alloc`, `new` 或者 `copy` 创建一个对象时，对象的引用计数器被设置为 1
+* 给对象发送一条 retain 消息（即调用 `retain` 方法），可以使引用计数器值 +1
+* 给对象发送一条 release 消息，可以使引用计数器值 -1
+* 当一个对象的引用计数器值为 0 时，那么它将被销毁，其占用的内存被系统回收，OC 也会自动向对象发送一条 dealloc 消息。一般会重写 `dealloc` 方法，在* 这里释放相关资源。一定不要直接调用 `dealloc` 方法。
+* 可以给对象发送 `retainCount` 消息获得当前的引用计数器值。
+
+
+### 内存管理原则
+
+* 谁创建，谁释放（“谁污染，谁治理”）。如果你通过 alloc、new 或者 (mutable) copy 来创建一个对象，那么你必须调用 release 或 autorelease。或句话说，不是你创建的，就不用你去释放
+* 一般来说，除了 alloc、new 或 copy 之外的方法创建的对象都被声明了 autorelease（autorelease 是延迟释放内存，不用你自己去手动释放，系统会知道在什么时候该去释放掉它。）
+* 谁 retain，谁 release。只要你调用了 retain，无论这个对象是如何生成的，你都要调用 release
+
+
+### 关于 `retain` 与 `release`
+
+retain 之后 count 加一。alloc 之后 count 就是1，release 就会调用 dealloc 销毁这个对象。
+
+如果手动调用过 retain 一次，需要 release 两次。通常在 method 中把参数赋给成员变量时需要retain。
+
+例如，ClassA有setName这个方法：
+
+```
+-(void)setName:(ClassName*) inputName
+{
+    name = inputName;
+    [name retain];      // 此处 retian，等同于 [inputName retain], count 等于 2
+}
+```
+
+调用时：
+
+```
+ClassName *myName = [[ClassName alloc] init];
+[classA setName:myName];  // retainCount == 2
+[myName release];         // retainCount == 1，在 ClassA 的 dealloc 中 release，name 才能真正释放内存。
+```
+
+### 关于 `autorelease`
+
+autorelease 更加 tricky，而且很容易被它的名字迷惑。我在这里要强调一下：autorelease 不是 garbage collection，完全不同于 Java 或者 .Net 中的 GC。
+
+autorelease和作用域没有任何关系！
+
+autorelease原理：
+
+1. 先建立一个 autorelease pool
+2. 对象从这个 autorelease pool 里面生成。
+3. 对象生成之后调用 autorelease 函数，这个函数的作用仅仅是在 autorelease pool 中做个标记，让 pool 记得将来 release 一下这个对象。
+4. 程序结束时，pool 本身也需要 rerlease, 此时 pool 会把每一个标记为 autorelease 的对象 release 一次。___如果某个对象此时 retainCount 大于 1，这个对象还是没有被销毁。___
+
+上面这个例子应该这样写：
+
+```
+ClassName *myName = [[[ClassName alloc] init] autorelease]; // 标记为 autorelease
+[classA setName:myName]; // retainCount == 2
+[myName release];        // retainCount == 1
+```
+
+注意：在 ClassA 的 dealloc 中不能 release name，否则 release pool 时会 release 这个retainCount 为 0 的对象，这是不对的。
+
+记住一点：如果这个对象是你 alloc 或者 new 出来的，你就需要调用 release。如果使用 autorelease，那么仅在发生过 retain 的时候 release 一次（让retainCount 始终为1）。
+
+
