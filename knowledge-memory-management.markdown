@@ -117,14 +117,20 @@ self.textField.text = firstName
 * dealloc虽然可以被重载，但是不能调用 `[super dealloc]`
 
 
-### Objective-C对象
+### ARC的修饰符
 
-ObjectiveC中的对象，有强参照(Strong reference)和弱参照(Weak reference)之分，当需要保持其他对象的时候，需要retain以确保对象引用计数加1。对象的持有者(owner)只要存在，那么该对象的强参照就一直存在。
+ARC主要提供了4种修饰符，他们分别是: `__strong`, `__weak`, `__autoreleasing`, `__unsafe_unretained`。
 
-对象处理的基本规则是
+#### `__strong`
 
-* 只要对象的持有者存在（对象被强参照），那么就可以使用该对象
-* 对象失去了持有者后，即被破弃
+表示引用为强引用。对应在定义 `@property` 时的 `strong`。所有对象只有当没有任何一个强引用指向时，才会被释放。
+
+注意：___如果在声明引用时不加修饰符，那么引用将默认是强引用。___当需要释放强引用指向的对象时，需要将强引用置nil。
+
+#### `__weak`
+
+表示引用为弱引用。对应在定义 `@property` 时用的 `weak`。弱引用不会影响对象的释放，即只要对象没有任何强引用指向，即使有100个弱引用对象指向也没用，该对象依然会被释放。不过好在，___对象在被释放的同时，指向它的弱引用会自动被置`nil`，这个技术叫zeroing weak pointer___。这样有效得防止无效指针、野指针的产生。`__weak` 一般用在 delegate 关系中防止循环引用或者用来修饰指向由 Interface Builder 编辑与生成的 UI 控件。
+
 
 
 ## Auto Release
