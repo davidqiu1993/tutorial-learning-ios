@@ -183,9 +183,9 @@ ClassName *myName = [[ClassName alloc] init];
 
 autorelease 更加 tricky，而且很容易被它的名字迷惑。我在这里要强调一下：autorelease 不是 garbage collection，完全不同于 Java 或者 .Net 中的 GC。
 
-autorelease和作用域没有任何关系！
+autorelease 和作用域没有任何关系！
 
-autorelease原理：
+autorelease 原理：
 
 1. 先建立一个 autorelease pool
 2. 对象从这个 autorelease pool 里面生成。
