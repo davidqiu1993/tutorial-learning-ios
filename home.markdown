@@ -15,6 +15,7 @@ Below are the recommended tutorials.
 Below are the knowledge points.
 
 * [Knowledge: Memory Management](knowledge-memory-management)
+* [Knowledge: Block](knowledge-block)
 
 
 ## Resources
