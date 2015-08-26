@@ -16,6 +16,7 @@ Below are the knowledge points.
 
 * [Knowledge: Memory Management](knowledge-memory-management)
 * [Knowledge: Block](knowledge-block)
+* [Knowledge: Multi-Threading](knowledge-multithreading)
 
 
 ## Resources
