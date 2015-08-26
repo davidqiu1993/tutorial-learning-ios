@@ -3,19 +3,25 @@
 This project is a record for the learning procedure of iOS development from a very beginner.
 
 
-## Contents
+## Tutorials
 
-Below are the contents of the project.
+Below are the recommended tutorials.
+
+* Start Developing iOS Apps Today \([English Version, Latest](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html) | [Chinese Version](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOSCh/index.html)\)
 
 
-### Knowledge Points
+## Knowledge Points
+
+Below are the knowledge points.
 
 * [Knowledge: Memory Management](knowledge-memory-management)
 
 
-### Resources
+## Resources
 
-* [Resources](resources)
+Below are the useful resources for iOS development learning.
+
+* [iOS Developer Library \(Prerelease\)](https://developer.apple.com/library/prerelease/ios/navigation/)
 
 
 ## Authorship
