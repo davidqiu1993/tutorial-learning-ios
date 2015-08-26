@@ -133,7 +133,7 @@ ARC主要提供了4种修饰符，他们分别是: `__strong`, `__weak`, `__auto
 
 
 
-## `retain`, `release`, `autorelease`
+## 手动内存管理（`retain`, `release`, `autorelease`）
 
 旧版本的 Objective-C 在管理内存时，遵循一套简单的规则。每一个对象都有一个名为 `retainCount` 的变量，它表示该对象有多少个引用。任何继承了NSObject 的对象都可以使用这个特性，对基本数据类型无效。
 
