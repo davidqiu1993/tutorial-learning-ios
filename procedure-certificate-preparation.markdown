@@ -61,23 +61,12 @@ $ openssl req -new -sha256 -key private.key -out my.certSigningRequest
 
 开发者证书跟用于开发的 Mac 上的私钥绑定，只能在拥有私钥的机器上使用。如果要迁移机器，则需要将证书导出为 .p12 文件。
 
-
-#### 3.2.1 生成开发证书
-
 在 [Apple 开发者中心](http://developer.apple.com/) 的 "Certificates" 面板中，点击 "添加 Certificate" 并上传刚刚生成的 CSR 文件，即可获取 `ios_development.cer` 证书。
-
-
-#### 3.2.2 生成发布证书
-
-@TODO
 
 
 ### 3.3 apns 证书
 
 apns (Apple Push Notification Service) 证书用于服务端消息推送，类似 ssl 证书使用，和 App 端的开发打包没有关系。
-
-
-#### 3.3.1 生成 apns 证书
 
 在 [Apple 开发者中心](http://developer.apple.com/) 的 "Identifiers" 面板中，点击 "添加 App ID" 并上传刚刚生成的 CSR 文件，即可获取 `aps_production.cer` 证书。
 
@@ -86,9 +75,6 @@ apns (Apple Push Notification Service) 证书用于服务端消息推送，类�
 
 .p12 (Personal Information Exchange) 证书实际是包含了 cer 证书及私钥信息，可以分发给团队成员。
 
-
-#### 3.4.1 生成 .p12 证书
-
 在 Keychain Access 中找到已经导入的 cer 证书，然后点右键导出为 .p12 格式文件即可。生成的时候可以设置密码。
 
 
@@ -96,15 +82,9 @@ apns (Apple Push Notification Service) 证书用于服务端消息推送，类�
 
 描述文件 (Provisioning Profiles) 是一个包含 Certificate、AppID、Devices ID 的文件，用于在 Xcode 调试打包时提供授权的配置信息。
 
-
-#### 3.5.1 通过 Apple 开发者中心生成
-
 在 [Apple 开发者中心](http://developer.apple.com/) 的 "Provisioning Profiles" 面板，点击 "添加 iOS Provisioning Profiles" 并上传刚刚生成的 CSR 文件，即可获取 `.mobileprovision` 文件。
 
-
-#### 3.5.2 通过登录 Xcode 获取
-
-在 Xcode 中登录开发者帐号后，可以连接开发者中心直接获取。
+同时，可以在 Xcode 中登录开发者帐号后，可以连接开发者中心直接获取。
 
 
 
