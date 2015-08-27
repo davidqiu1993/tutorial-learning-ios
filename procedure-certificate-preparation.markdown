@@ -36,7 +36,7 @@ __方法一：使用 OSX 系统自带的 Keychain Access__
 
 * 打开 Keychain Access 应用（按 "Ctrl+Space" 打开 Spotlight 搜索，然后输入 `Keychain Access` 就可以找到了）
 * 选择 "Request a Certificate From a Certificate Authority…"
-  ![certificate_01](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/cd8263d3be/certificate_01.png =200)
+  ![certificate_01{200,100}](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/cd8263d3be/certificate_01.png)
 * 输入 email 等信息后保存为 .certSigningRequest 文件
 
 命令行下使用 openssl 生成
