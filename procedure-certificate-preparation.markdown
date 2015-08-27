@@ -19,8 +19,8 @@ This page contains information about certificate preparation procedure.
 以下是各流程中证书的需求情况：
 
 * 模拟器调试：不需要证书
-* 真机调试：描述文件 (Provisioning Profiles)，开发者证书(ios_development.cer)
-* 打包和发布：描述文件(Provisioning Profiles)，可用于发布的开发者证书(ios_distribution.cer)
+* 真机调试：描述文件（Provisioning Profiles），开发者证书（`ios_development.cer`）
+* 打包和发布：描述文件（Provisioning Profiles），可用于发布的开发者证书（`ios_distribution.cer`）
 * 消息推送后端服务：apns 证书
 
 
