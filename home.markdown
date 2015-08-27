@@ -25,6 +25,7 @@ Below are the knowledge points.
 Below are the information of procedure issues.
 
 * [Procedure: Certificate Preparation](procedure-certificate-preparation)
+* [Procedure: Online Debugging](procedure-online-debugging)
 
 
 ## Resources
