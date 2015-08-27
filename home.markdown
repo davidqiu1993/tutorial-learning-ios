@@ -35,18 +35,10 @@ Below are related standards for iOS development.
 * App Store Review Guidelines \([English Version, Original](https://developer.apple.com/app-store/review/guidelines/) | [Chinese Version](https://github.com/leecade/ios-dev-flow/blob/master/Appstore最新审核标准_2015-3.md)\)
 
 
-## Apple Developer
-
-Below are links of Apple developer platform.
-
-* [Apple 开发者中心](https://developer.apple.com/)
-* [iTunes Connect \(管理 Appstore 应用上架\)](http://itunesconnect.apple.com/)
-* [TestFlight \(应用测试\)] (ttps://developer.apple.com/testflight/)
-
-
 ## Resources
 
 Below are the useful resources for iOS development learning.
+
 
 ### Further Reading
 
@@ -55,6 +47,16 @@ Below are further reading for learning iOS development.
 * [Objective-C 快速上手](http://www.cnblogs.com/zzy0471/p/3894307.html)
 * [iPhone Tutorials](http://www.raywenderlich.com/tutorials)
 * [iOS Developer Library \(Prerelease\)](https://developer.apple.com/library/prerelease/ios/navigation/)
+
+
+### Apple Developer
+
+Below are links of Apple developer platform.
+
+* [Apple 开发者中心](https://developer.apple.com/)
+* [iTunes Connect \(管理 Appstore 应用上架\)](http://itunesconnect.apple.com/)
+* [TestFlight \(应用测试\)] (ttps://developer.apple.com/testflight/)
+
 
 ### Useful Tools
 
