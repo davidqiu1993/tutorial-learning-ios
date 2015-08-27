@@ -17,6 +17,14 @@ Below are the knowledge points.
 * [Knowledge: Memory Management](knowledge-memory-management)
 * [Knowledge: Block](knowledge-block)
 * [Knowledge: Multi-Threading](knowledge-multithreading)
+* [Knowledge: Data Persistence](knowledge-data-persistence)
+
+
+## Procedure
+
+Below are the information of procedure issues.
+
+* [Procedure: Certificate Preparation](procedure-certificate-preparation)
 
 
 ## Resources
