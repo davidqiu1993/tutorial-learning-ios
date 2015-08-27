@@ -63,8 +63,10 @@ NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NS
 
 * `path`: 创建目录的目标路径
 * `createIntermediates`: 这个参数一般为 `YES`，表示如果目录路径中间的某个目录不存在则创建之，如果是 `NO` 的话，则要保证所创建目录的父目录都必须已经存在
-* `attributes`: [TODO]
-* `error`: [TODO]
+* `attributes`
+* `error`
+
+
 
 获取目录下的所有文件
 - (NSArray *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
