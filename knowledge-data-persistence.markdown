@@ -5,29 +5,29 @@ This page contains knowledge points about data persistence in iOS development.
 
 ## 1. 文件系统
 
-不管是Mac OS X 还是iOS的文件系统都是建立在UNIX文件系统基础之上的。
+不管是 Mac OS X 还是 iOS 的文件系统都是建立在 UNIX 文件系统基础之上的。
 
 
 ### 1.1 沙盒模型
 
-在iOS中，一个App的读写权限只局限于自己的沙盒目录中。
+在 iOS 中，一个 App 的读写权限只局限于自己的沙盒目录中。
 
-__沙盒模型到底有哪些好处呢?__
+__沙盒模型到底有哪些好处呢？__
 
 * 安全：别的 App 无法修改你的程序或数据
 * 保护隐私：别的 App 无法读取你的程序和数据
 * 方便删除：因为一个 App 所有产生的内容都在自己的沙盒中，所以删除 App 只需要将沙盒删除就可以彻底删除程序了
 
-__iOS App 沙盒中的目录__:
+__iOS App 沙盒中的目录__：
 
 * _App Bundle_: 如 `xxx.app` 其实是一个目录，里面有 app 本身的二进制数据以及资源文件
 * _`Documents`_: 存放程序产生的文档数据
 * _`Library`_: 默认包含两个目录，分别是 `Caches` 和 `Preferences`
 * _`tmp`_: 临时文件目录
 
-如果我们想在程序中获取上面某个目录的路径，应该如何实现呢？
+如果我们想在程序中获取上面某个目录的路径，可以通过 `NSPathUtilities.h` 中的 `NSSearchPathForDirectoriesInDomains` 函数，我们便可以获取我们想要的路径。
 
-下面就讲讲路径的获取，通过 `NSPathUtilities.h` 中的 `NSSearchPathForDirectoriesInDomains` 函数，我们便可以获取我们想要的路径。此函数具体声明如下：
+此函数具体声明如下：
 
 ```
 NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde); 
