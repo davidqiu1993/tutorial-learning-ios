@@ -57,9 +57,7 @@ $ openssl req -new -sha256 -key private.key -out my.certSigningRequest
 
 ### 3.2 开发者证书
 
-开发者证书由 Apple 官方颁发，是用来证明开发者资格的证书文件，有 "开发证书" (`ios_development.cer`) 和 发布证书 (`ios_distribution.cer`) 两种类型。
-
-开发者证书跟用于开发的 Mac 上的私钥绑定，只能在拥有私钥的机器上使用。如果要迁移机器，则需要将证书导出为 .p12 文件。
+开发者证书由 Apple 官方颁发，是用来证明开发者资格的证书文件，有 "开发证书" (`ios_development.cer`) 和 发布证书 (`ios_distribution.cer`) 两种类型。开发者证书跟用于开发的 Mac 上的私钥绑定，只能在拥有私钥的机器上使用。如果要迁移机器，则需要将证书导出为 .p12 文件。
 
 在 [Apple 开发者中心](http://developer.apple.com/) 的 "Certificates" 面板中，点击 "添加 Certificate" 并上传刚刚生成的 CSR 文件，即可获取 `ios_development.cer` 证书。
 
