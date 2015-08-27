@@ -95,3 +95,12 @@ apns (Apple Push Notification Service) 证书用于服务端消息推送，类�
 * 大学（University） __free__：大学帐号不能发布到 AppStore，主要拥有真机调试的权限。
 
 
+## 5. Resources
+
+Below are related resources about the certificate preparation procedure issues.
+
+* [iOS 开发流程笔记](https://github.com/leecade/ios-dev-flow)
+* [Mac 环境下生成 Apple 证书教程](http://open.zhui.cn/index.php?title=MAC环境下生成Apple证书教程)
+* [苹果Xcode 证书生成、设置、应用完整图文教程](http://blog.sina.com.cn/s/blog_5a6efa330101dx05.html)
+
+
