@@ -26,6 +26,8 @@ Below are the information of procedure issues.
 
 * [Procedure: Certificate Preparation](procedure-certificate-preparation)
 * [Procedure: Online Debugging](procedure-online-debugging)
+* [Procedure: Alpha Testing](procedure-alpha-testing)
+* Procedure: AppStore Distribution
 
 
 ## Standards
