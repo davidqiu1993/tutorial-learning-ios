@@ -35,7 +35,6 @@ CSR (Certificate Request) 文件用于换取证书的公钥文件，实际是在
 __方法一：使用 OSX 系统自带的 Keychain Access__
 
 * 打开 Keychain Access 应用（按 "Ctrl+Space" 打开 Spotlight 搜索，然后输入 `Keychain Access` 就可以找到了）
-
 * 选择 "Request a Certificate From a Certificate Authority…"
 
   ![certificate_01](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/50d02c2cfd/certificate_01.jpeg)
