@@ -63,9 +63,21 @@ NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NS
 
 * `path`: 创建目录的目标路径
 * `createIntermediates`: 这个参数一般为 `YES`，表示如果目录路径中间的某个目录不存在则创建之，如果是 `NO` 的话，则要保证所创建目录的父目录都必须已经存在
-* `attributes`: //todo
-* `error`: //todo
+* `attributes`: [TODO]
+* `error`: [TODO]
 
+获取目录下的所有文件
+- (NSArray *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
+如果目录为空，则返回空数组
+
+其他的一些方法
+- (BOOL)copyItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+- (BOOL)moveItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+- (BOOL)linkItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+- (BOOL)removeItemAtPath:(NSString *)path error:(NSError **)error;
+更多的可以查看文档 NSFileManager Class Reference。
+
+在实际项目中，我们一般会写一个工具类来负责项目中所有的路径操作。
 
 
 
