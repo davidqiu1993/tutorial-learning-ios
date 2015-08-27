@@ -42,6 +42,31 @@ NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NS
 注意：函数返回的类型为数组，___在 iOS 中一般这个数组中只包含一个元素，所以直接取 `lastObject` 即可。___
 
 
+### 1.2 `NSFileManager`
+
+`NSFileManager` 提供一个类方法获得一个单例：
+
+```
+/* Returns the default singleton instance. */
++ (NSFileManager *) defaultManager;
+```
+
+#### 1.2.1 新建目录
+
+调用接口如下：
+
+```
+- (BOOL) createDirectoryAtPath:(NSString *)path withIntermediateDirectories:(BOOL)createIntermediates attributes:(NSDictionary *)attributes error:(NSError **)error;
+```
+
+该方法包含以下参数：
+
+* `path`: 创建目录的目标路径
+* `createIntermediates`: 这个参数一般为 `YES`，表示如果目录路径中间的某个目录不存在则创建之，如果是 `NO` 的话，则要保证所创建目录的父目录都必须已经存在
+* `attributes`: //todo
+* `error`: //todo
+
+
 
 
 ## Resources
