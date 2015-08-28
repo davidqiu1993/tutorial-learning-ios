@@ -51,6 +51,9 @@ NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NS
 + (NSFileManager *) defaultManager;
 ```
 
+在实际项目中，我们一般会写一个工具类来负责项目中所有的路径操作。
+
+
 #### 1.2.1 新建目录
 
 调用接口如下：
@@ -67,20 +70,56 @@ NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NS
 * `error`
 
 
+### 1.2.2 获取目录下的所有文件
 
-获取目录下的所有文件
-- (NSArray *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
-如果目录为空，则返回空数组
+调用接口如下：
 
-其他的一些方法
+```
+- (NSArray *) contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
+```
+
+该方法包含以下参数：
+
+* `path`: 查询目录的目标路径
+* `error`
+
+注意：如果目录为空，则返回空数组。
+
+
+### 1.2.3 复制文件
+
+调用接口如下：
+
+```
 - (BOOL)copyItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+```
+
+
+### 1.2.4 移动文件
+
+调用接口如下：
+
+```
 - (BOOL)moveItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
-- (BOOL)linkItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+```
+
+
+### 1.2.5 删除文件
+
+调用接口如下：
+
+```
 - (BOOL)removeItemAtPath:(NSString *)path error:(NSError **)error;
-更多的可以查看文档 NSFileManager Class Reference。
+```
 
-在实际项目中，我们一般会写一个工具类来负责项目中所有的路径操作。
 
+### 1.2.6 创建软链接
+
+调用接口如下：
+
+```
+- (BOOL)linkItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+```
 
 
 ## Resources
@@ -88,3 +127,6 @@ NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NS
 Below are the resources about data persistence issues.
 
 * [iOS持久化](http://geeklu.com/2012/01/ios-persistence/)
+* [NSFileManager Class Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/index.html)
+
+
