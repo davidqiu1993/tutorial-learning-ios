@@ -25,9 +25,9 @@ Below are the knowledge points.
 Below are the information of procedure issues.
 
 * [Procedure: Certificate Preparation](procedure-certificate-preparation)
-* [Procedure: Online Debugging](procedure-online-debugging)
-* [Procedure: Alpha Testing](procedure-alpha-testing)
-* Procedure: AppStore Distribution
+* [Procedure: Online Debug Distribution](procedure-online-debug-distribution)
+* [Procedure: Alpha Test Distribution](procedure-alpha-test-distribution)
+* Procedure: App Store Distribution
 
 
 ## Standards
