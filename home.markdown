@@ -14,19 +14,19 @@ Below are the recommended tutorials.
 
 Below are the knowledge points.
 
-* [Knowledge: Memory Management](knowledge-memory-management)
-* [Knowledge: Block](knowledge-block)
-* [Knowledge: Multi-Threading](knowledge-multithreading)
-* [Knowledge: Data Persistence](knowledge-data-persistence)
+* [Knowledge: Memory Management](knowledge-memory-management.markdown)
+* [Knowledge: Block](knowledge-block.markdown)
+* [Knowledge: Multi-Threading](knowledge-multithreading.markdown)
+* [Knowledge: Data Persistence](knowledge-data-persistence.markdown)
 
 
 ## Procedure
 
 Below are the information of procedure issues.
 
-* [Procedure: Certificate Preparation](procedure-certificate-preparation)
-* [Procedure: Online Debug Distribution](procedure-online-debug-distribution)
-* [Procedure: Alpha Test Distribution](procedure-alpha-test-distribution)
+* [Procedure: Certificate Preparation](procedure-certificate-preparation.markdown)
+* [Procedure: Online Debug Distribution](procedure-online-debug-distribution.markdown)
+* [Procedure: Alpha Test Distribution](procedure-alpha-test-distribution.markdown)
 * Procedure: App Store Distribution
 
 
@@ -75,6 +75,6 @@ Below are useful tools for iOS development.
 Below is the information of the authorship.
 
 * Author: David Qiu
-* Email: david.qiu@dji.com
+* Email:  david@davidqiu.com
 
 Copyright (C) 2015, David Qiu. All rights reserved.

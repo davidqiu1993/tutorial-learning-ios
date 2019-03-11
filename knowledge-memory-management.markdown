@@ -22,7 +22,7 @@ iOS 5最显著的变化就是增加了Automatic Reference Counting（自动引�
 }  
 -(id)initWithName:(NSString *)name;  
 @end  
- 
+
 @implementation NonARCObject  
 -(id)initWithName:(NSString *)newName {  
     self = [super init];  
@@ -31,7 +31,7 @@ iOS 5最显著的变化就是增加了Automatic Reference Counting（自动引�
     }  
     return self;  
 }  
- 
+
 -(void)dealloc {  
     [name release];  
     [Super dealloc];  
@@ -47,7 +47,7 @@ iOS 5最显著的变化就是增加了Automatic Reference Counting（自动引�
 }  
 -(id)initWithName:(NSString *)name;  
 @end  
- 
+
 @implementation ARCObject  
 -(id)initWithName:(NSString *)newName {  
     self = [super init];  
@@ -96,7 +96,7 @@ NSString *firstName = @"Ray";
 
 此时 `firstName` 变量成为 `NSString` 对象的指针，也就是 `@"Ray"` 的拥有者，指向 `@"Ray"` 的引用计数加一。如下图所示：
 
-![arc_01](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/c94c6d5793/arc_01.jpg)
+![arc_01](arc_01.jpg)
 
 当调用以下代码时：
 
@@ -106,7 +106,7 @@ self.textField.text = firstName
 
 `self.textField.text` 成为了 `@"Ray"` 的另一个拥有者（一个对象的拥有者可以有多个），那么 `@"Ray"` 的引用再加一。如下图所示：
 
-![arc_02](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/8b759e3f72/arc_02.jpg)
+![arc_02](arc_02.jpg)
 
 当以上所有指针指向新值，或者指针不再存在时，相关联的对象就会自动释放。
 
@@ -211,5 +211,3 @@ Below are the related resources about memory management.
 
 * [iOS开发ARC内存管理技术要点](http://www.cnblogs.com/flyFreeZn/p/4264220.html)
 * Automatic Reference Counting on iOS \([English Version](http://www.drdobbs.com/mobile/automatic-reference-counting-on-ios/240000820) | [Chinese Version, Translation](http://www.oschina.net/translate/automatic-reference-counting-on-ios)\)
-
-

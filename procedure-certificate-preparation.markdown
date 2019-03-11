@@ -41,7 +41,7 @@ CSR (Certificate Request) 文件用于换取证书的公钥文件，实际是在
 
 然后在任务栏上找到 "Request a Certificate From a Certificate Authority…" 并选择。如下图所示：
 
-![certificate_01](http://gitlab.djicorp.com/uploads/david.qiu/learning-ios/50d02c2cfd/certificate_01.jpeg)
+![certificate_01](certificate_01.jpeg)
 
 最后输入 email 等信息后保存为 .certSigningRequest 格式文件即可。
 
@@ -102,5 +102,3 @@ Below are related resources about the certificate preparation procedure issues.
 * [iOS 开发流程笔记](https://github.com/leecade/ios-dev-flow)
 * [Mac 环境下生成 Apple 证书教程](http://open.zhui.cn/index.php?title=MAC环境下生成Apple证书教程)
 * [苹果Xcode 证书生成、设置、应用完整图文教程](http://blog.sina.com.cn/s/blog_5a6efa330101dx05.html)
-
-
